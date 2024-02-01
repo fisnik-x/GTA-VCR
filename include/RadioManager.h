@@ -29,8 +29,9 @@ class RadioStation {
     std::string m_name;
     std::string m_filename;
     RadioStations m_station;
-    FMOD::Sound* m_sound = 0;
-    FMOD::Channel* m_channel = 0;
+public:
+    FMOD::Sound *m_sound;
+    FMOD::Channel *m_channel;
 public:
     RadioStation(std::string name, 
                  std::string filename, 
@@ -38,18 +39,22 @@ public:
                  FMOD::Sound sound) : m_name{name}, 
                                       m_filename{filename}
     {};
+
+    std::string GetName() const { return m_name; }
+    std::string GetFilename() const { return m_filename; }
 };
 
 class RadioManager {
+    int current = 0;
     float m_volume = 1.0f;
+    bool RadioStation_On = false;    
 public:
     RadioManager();
     RadioManager(std::vector<RadioStation> stations);
     ~RadioManager();
     void Play();
+    void Pause();
     void Stop();
-    void Next();
-    void Prev();
     void TurnOn();
     
     void CreateRadioStation(const std::string name, const std::string filename);
