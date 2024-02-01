@@ -1,5 +1,5 @@
 <samp>
 
-# GTA-VCR
+# GTA Vice City Radio
 
 </samp>
