@@ -2,9 +2,7 @@
     "configurations": [
         {
             "name": "Win32 GNU",
-            "includePath": [
-                "${workspaceFolder}/**"
-            ],
+            "includePath": ["${workspaceFolder}/**", "${workspaceFolder}/vendors/**"],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
@@ -13,7 +11,8 @@
             "cStandard": "c17",
             "cppStandard": "c++17",
             "configurationProvider": "ms-vscode.cpptools",
-            "intelliSenseMode": "windows-gcc-x64"
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerPath": "C:/msys64/mingw64/bin/g++.exe"
         }
     ],
     "version": 4
