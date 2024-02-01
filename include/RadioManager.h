@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <filesystem>
+#include <memory>
 #include "../vendors/fmod/include/fmod.hpp"
 #include "../vendors/fmod/include/fmod.h"
 
