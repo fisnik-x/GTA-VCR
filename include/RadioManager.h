@@ -53,6 +53,7 @@ public:
     RadioManager();
     RadioManager(std::vector<RadioStation> stations);
     ~RadioManager();
+    
     void Play();
     void Pause();
     void Stop();

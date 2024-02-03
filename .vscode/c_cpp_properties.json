@@ -2,7 +2,11 @@
     "configurations": [
         {
             "name": "Win32 GNU",
-            "includePath": ["${workspaceFolder}/**", "${workspaceFolder}/vendors/**"],
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/vendors/**",
+                "${workspaceFolder}/third-party/**"
+            ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
