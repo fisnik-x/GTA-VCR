@@ -15,7 +15,6 @@ else()
     add_compile_options(
         -std=c++17 
         -D_GLIBCXX_USE_CXX11_ABI=0
-        -mwindows 
         )
 endif()
 
@@ -26,10 +25,17 @@ if(WIN32)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 endif()
 
+set(CMAKE_EXE_LINKER_FLAGS "-mwindows")
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 
-add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/third-party/SDL/")
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}/third-party/SDL/include")
+find_package(OpenGL REQUIRED)
+include_directories(${OPENGL_INCLUDE_DIR})
+
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/third-party/glfw/")
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/third-party/glfw/include")
 
 #find_package(FMOD MODULE REQUIRED)
 find_package(SDL3 REQUIRED)
@@ -38,11 +44,5 @@ set(SOURCES src/main.cpp src/ViceCityRadio.cpp)
 add_executable(VCR ${SOURCES})
 #target_include_directories(VCR PUBLIC ${FMOD_INCLUDE_DIR} include)
 #target_link_libraries(VCR ${FMOD_LIBRARY_LIB})
-target_include_directories(VCR 
-    PUBLIC ${SDL3_INCLUDE_DIRS}
-)
-
-target_link_libraries(
-    VCR 
-    PUBLIC 
-    ${SDL3_LIBRARIES} SDL3::SDL3 mingw32)
+target_include_directories(VCR PUBLIC ${GLFW_INCLUDE_DIRS})
+target_link_libraries(VCR ${OPENGL_gl_LIBRARY} glfw)

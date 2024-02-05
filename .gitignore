@@ -3,3 +3,6 @@ cmake
 Makefile
 CMakeLists.txt
 CMakeLists.txt
+vendors/freeglut
+vendors/glew
+vendors/glfw
