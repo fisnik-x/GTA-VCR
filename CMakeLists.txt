@@ -14,7 +14,8 @@ if(MSVC)
 else()
     add_compile_options(
         -std=c++17 
-        -D_GLIBCXX_USE_CXX11_ABI=0 
+        -D_GLIBCXX_USE_CXX11_ABI=0
+        -mwindows 
         )
 endif()
 
